@@ -1,4 +1,4 @@
-# yixun-trans
+# YixunTranslate
 
 =====Thank all contributors to this script!=====
 
