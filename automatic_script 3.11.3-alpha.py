@@ -162,7 +162,7 @@ def DoTranslate(cookie):
     global number,SubmitCounter,SaveCounter
     # 获取数据的url，网站源代码上没有数据
     info_url = "http://218.94.157.126:9328/translate/get_vul"
-    translator = Translator()
+    translator = Translator(service_urls=['translate.google.cn'])
     # 获取数据并转成str类型
     data = requests.get(info_url, cookies=cookie).content
     data = str(data,'utf-8')
