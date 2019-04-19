@@ -172,3 +172,33 @@
 3. 网址会翻译出来；
 
 4. “[系统]上[版本]之前的[软件]版本”希望翻译成“[系统]上的[软件] [版本]之前的版本”。
+
+## Hopefully... 
+
+**fix：**
+
+1. 英文逗号和英文括号改成中文的；
+
+2. Common Vulnerabilities and Exposures projects翻译成CVE项目；
+
+---
+
+**DoTranslate：**
+
+1. CentOS 安全更新 后面带具体版本的翻译写在前面，例：
+
+> EN_NAME - *CentOS Update for thunderbird CESA-2015:1682 centos7* 
+> 
+> 现在的CN_NAME - *CentOS 安全更新 CESA-2015:1682 centos7（thunderbird）* 
+> 
+> 希望的CN_NAME - *CentOS7 安全更新 CESA-2015:1682（thunderbird）*
+
+3. xxx Detection翻译成检测到xxx;
+
+4. 
+
+> EN_SUMMARY - *This host is missing an important security   update according to Microsoft KB3213630* 
+> 
+> 现在的CN_SUMMARY - *根据Microsoft KB3213630，此主机缺少重要的安全更新。* 
+> 
+> 希望的CN_SUMMARY - *根据Microsoft KB3213630，此主机缺少xxx软件的重要安全更新。* 
