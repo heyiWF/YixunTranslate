@@ -51,16 +51,13 @@ def login():
     while driver.current_url == "http://218.94.157.126:9328/login": ...
     
     # 执行sql语句，更新统计翻译条目数
-    try:
-        with connection.cursor() as cursor:
-            # 执行sql语句，插入记录
-            # sql = 'INSERT INTO translate (username, last_upload_time, translate_count) VALUES (%s, %s, %s)'
-            sql = 'INSERT INTO translate (username, last_upload_time, translate_count) VALUES (%s, %s, %s)  ON DUPLICATE KEY UPDATE last_upload_time=%s, translate_count=translate_count+%s'
-            cursor.execute(sql, (username, now, iteration, now, iteration))
-        # 没有设置默认自动提交，需要主动提交，以保存所执行的语句
-        connection.commit()
-    finally:
-        connection.close()
+    with connection.cursor() as cursor:
+        # 执行sql语句，插入记录
+        # sql = 'INSERT INTO translate (username, last_upload_time, translate_count) VALUES (%s, %s, %s)'
+        sql = 'INSERT INTO translate (username, last_upload_time, translate_count) VALUES (%s, %s, %s)  ON DUPLICATE KEY UPDATE last_upload_time=%s, translate_count=translate_count+%s'
+        cursor.execute(sql, (username, now, iteration, now, iteration))
+    # 没有设置默认自动提交，需要主动提交，以保存所执行的语句
+    connection.commit()
 
     return driver
 
@@ -89,15 +86,13 @@ def Translate(driver,cookie):
         # 设置访问频率
         time.sleep(2)
 
-    try:
-        with connection.cursor() as cursor:
-            # 执行sql语句，记录最终提交的条目数
-            sql = 'UPDATE translate SET submit_count=%s WHERE username=%s'
-            cursor.execute(sql, (SubmitCounter, username))
-        # 没有设置默认自动提交，需要主动提交，以保存所执行的语句
-        connection.commit()
-    finally:
-        connection.close()
+    with connection.cursor() as cursor:
+        # 执行sql语句，记录最终提交的条目数
+        sql = 'UPDATE translate SET submit_count=submit_count+%s WHERE username=%s'
+        cursor.execute(sql, (SubmitCounter, username))
+    # 没有设置默认自动提交，需要主动提交，以保存所执行的语句
+    connection.commit()
+    connection.close()
 
     print("本次共翻译{0}条，其中{1}条已提交，还有{2}条未提交内容在“翻译列表”栏内".format
         (iteration,SubmitCounter,SaveCounter))
