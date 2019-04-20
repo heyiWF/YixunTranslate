@@ -87,7 +87,7 @@ def Translate(driver,cookie):
         number = number + 1
         print("进度：{0}/{1}".format(str(number),iteration))
         # 设置访问频率
-        time.sleep(10)
+        time.sleep(2)
 
     print("本次共翻译{0}条，其中{1}条已提交，还有{2}条未提交内容在“翻译列表”栏内".format
         (iteration,SubmitCounter,SaveCounter))
