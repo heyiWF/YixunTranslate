@@ -285,7 +285,7 @@
 > 
 > 希望的CN_NAME - *CentOS7 安全更新 CESA-2015:1682（thunderbird）*
 
-3. xxx Detection翻译成检测到xxx;
+3. ~~xxx Detection翻译成检测到xxx;~~ 已增加！
 
 4. 
 
